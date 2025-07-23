@@ -5,6 +5,14 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelProcessing", "ParallelProcessing.csproj", "{AD321F69-BC17-4C78-BBE9-E2150134F2AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CancellationToken_Practice", "..\CancellationToken_Practice\CancellationToken_Practice.csproj", "{DD4BF403-CB86-4221-8A08-4AD55F907265}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelProcessing_advanced", "..\ParallelProcessing_advanced\ParallelProcessing_advanced.csproj", "{32330282-0F7A-4A6A-8A23-4BDFC734B4B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelProcessing_test2", "..\ParallelProcessing_test2\ParallelProcessing_test2.csproj", "{654AF77A-A195-41E6-8C32-D8CDC3ECC581}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PICaculator_WPF", "..\PICaculator_WPF\PICaculator_WPF.csproj", "{BB6A2120-582C-498C-B23C-5F0AB0BFD9DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{AD321F69-BC17-4C78-BBE9-E2150134F2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD321F69-BC17-4C78-BBE9-E2150134F2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD321F69-BC17-4C78-BBE9-E2150134F2AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD4BF403-CB86-4221-8A08-4AD55F907265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD4BF403-CB86-4221-8A08-4AD55F907265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD4BF403-CB86-4221-8A08-4AD55F907265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD4BF403-CB86-4221-8A08-4AD55F907265}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32330282-0F7A-4A6A-8A23-4BDFC734B4B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32330282-0F7A-4A6A-8A23-4BDFC734B4B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32330282-0F7A-4A6A-8A23-4BDFC734B4B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32330282-0F7A-4A6A-8A23-4BDFC734B4B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{654AF77A-A195-41E6-8C32-D8CDC3ECC581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{654AF77A-A195-41E6-8C32-D8CDC3ECC581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{654AF77A-A195-41E6-8C32-D8CDC3ECC581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{654AF77A-A195-41E6-8C32-D8CDC3ECC581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB6A2120-582C-498C-B23C-5F0AB0BFD9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB6A2120-582C-498C-B23C-5F0AB0BFD9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB6A2120-582C-498C-B23C-5F0AB0BFD9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB6A2120-582C-498C-B23C-5F0AB0BFD9DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
