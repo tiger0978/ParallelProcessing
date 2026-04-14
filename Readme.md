@@ -1,3 +1,31 @@
+# ParallelProcessing - 巨量 CSV 檔案平行處理與架構優化 🚀
+
+本專案是針對千萬級距 (10M ~ 30M rows) 巨量 CSV 檔案讀寫的效能實驗與架構優化實作。
+結合了底層的字串操作優化 (Span/Expression Tree)，本專案進一步引入了 **TPL (Task Parallel Library)** 進行多執行緒平行處理，並探討了在多執行緒環境下的記憶體控制與執行緒安全（Thread-Safety）議題。
+
+## ✨ 核心架構：平行讀取 + 同步寫入
+
+為了解決將千萬筆資料一次性載入導致的 **OOM (Out of Memory)** 問題，以及多執行緒同時寫入單一檔案造成的 **Race Condition (競爭危害)**，本專案採用了以下架構設計：
+
+1. **分批平行讀取 (Chunked Parallel Read)**
+   * 捨棄一次性讀取，將千萬筆資料依固定筆數（如 250 萬筆）切割成多個 Chunk。
+   * 透過 `Parallel.ForAsync` 與 `Task.Run` 派發給 CPU 多個核心同時讀取。
+   * **[執行緒安全]** 每個 Task 內部宣告獨立的區域變數 `List<User>` 作為「個人背包」，確保讀取階段各執行緒互不干擾，達到 Lock-free 的極速讀取。
+
+2. **輕量級鎖同步寫入 (Synchronized I/O via Lock)**
+   * 當各執行緒讀取並解析完自己的區塊後，會統一寫入至同一個目標 CSV 檔案中。
+   * 使用 C# 的 `lock (key)` 機制，在「檔案寫入」的瓶頸處設立管制站，確保同一時間只有單一執行緒能進行硬碟 I/O 操作，完美避免檔案佔用與資料毀損。
+
+3. **積極的記憶體釋放 (Aggressive GC)**
+   * 在每個 Task 完成排隊寫入後，立刻執行 `users.Clear(); users = null;` 並主動呼叫 `GC.Collect()`。
+   * 此舉確保記憶體水位呈現穩定的鋸齒狀，無論總資料量多大，常駐記憶體皆能控制在安全範圍（約數百 MB）。
+
+4. **執行緒安全的狀態紀錄 (Concurrent Collections)**
+   * 針對跨執行緒共用的時間統計變數，全面採用 `ConcurrentBag<long>`，避免多執行緒同時 `.Add()` 時引發的陣列索引越界或資料遺失問題。
+
+---
+
+
 ## 平行處理資料載入/寫入速度
 
 ###　規格:
